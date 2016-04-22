@@ -101,8 +101,7 @@ fn assert_output(source: &str, expected_filename: &str) {
 #[test]
 fn idempotence_tests() {
     // Get all files in the tests/target directory.
-    let files = fs::read_dir("tests/target")
-        .expect("Couldn't read target dir")
+    let files = fs::read_dir("tests/target").expect("Couldn't read target dir")
         .map(get_path_string);
     let (_reports, count, fails) = check_files(files);
 
@@ -115,8 +114,7 @@ fn idempotence_tests() {
 // no warnings are emitted.
 #[test]
 fn self_tests() {
-    let files = fs::read_dir("src/bin")
-        .expect("Couldn't read src dir")
+    let files = fs::read_dir("src/bin").expect("Couldn't read src dir")
         .chain(fs::read_dir("tests").expect("Couldn't read tests dir"))
         .map(get_path_string);
     // Hack because there's no `IntoIterator` impl for `[T; N]`.
@@ -313,8 +311,7 @@ fn get_target(file_name: &str, target: Option<&str>) -> String {
     if file_name.contains("source") {
         let target_file_name = file_name.replace("source", "target");
         if let Some(replace_name) = target {
-            Path::new(&target_file_name)
-                .with_file_name(replace_name)
+            Path::new(&target_file_name).with_file_name(replace_name)
                 .into_os_string()
                 .into_string()
                 .unwrap()

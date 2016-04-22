@@ -21,8 +21,7 @@ fn c() {
 }
 
 fn foo() -> Vec<i32> {
-    (0..11)
-        .map(|x|
+    (0..11).map(|x|
         // This comment disappears.
         if x % 2 == 0 { x } else { x * 2 })
         .collect()

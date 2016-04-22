@@ -32,8 +32,7 @@ fn main() {
         x
     });
 
-    some_fuuuuuuuuunction()
-        .method_call_a(aaaaa, bbbbb, |c| {
+    some_fuuuuuuuuunction().method_call_a(aaaaa, bbbbb, |c| {
             let x = c;
             x
         })
@@ -100,8 +99,7 @@ fn floaters() {
         .bar()
         .baz();
 
-    Foo { x: val }
-        .baz(|| {
+    Foo { x: val }.baz(|| {
             // force multiline
         })
         .quux();

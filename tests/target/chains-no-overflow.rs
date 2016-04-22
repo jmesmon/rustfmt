@@ -14,8 +14,7 @@ fn main() {
             false => (),
         });
 
-    loong_func()
-        .quux(move || if true {
+    loong_func().quux(move || if true {
             1
         } else {
             2

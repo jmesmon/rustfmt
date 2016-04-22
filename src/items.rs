@@ -1523,8 +1523,7 @@ fn rewrite_args(context: &RewriteContext,
         };
 
         let more_items = itemize_list(context.codemap,
-                                      args[min_args - 1..]
-                                          .iter()
+                                      args[min_args - 1..].iter()
                                           .map(ArgumentKind::Regular)
                                           .chain(variadic_arg),
                                       ")",

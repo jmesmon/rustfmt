@@ -707,8 +707,7 @@ mod test {
     // This is probably intended to be a non-test fn, but it is not used. I'm
     // keeping it around unless it helps us test stuff.
     fn uncommented(text: &str) -> String {
-        CharClasses::new(text.chars())
-            .filter_map(|(s, c)| {
+        CharClasses::new(text.chars()).filter_map(|(s, c)| {
                 match s {
                     FullCodeCharKind::Normal => Some(c),
                     _ => None,

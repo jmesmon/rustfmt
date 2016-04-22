@@ -91,7 +91,6 @@ use config::BlockIndentStyle;
 use syntax::{ast, ptr};
 use syntax::codemap::{mk_sp, Span};
 
-
 pub fn rewrite_chain(expr: &ast::Expr,
                      context: &RewriteContext,
                      width: usize,
@@ -118,7 +117,7 @@ pub fn rewrite_chain(expr: &ast::Expr,
     } else if parent_rewrite.contains('\n') {
         (chain_indent(context, parent_block_indent.block_indent(context.config)), false)
     } else {
-        (chain_indent_newline(context, offset + Indent::new(0, parent_rewrite.len())), false)
+        (chain_indent_newline(context, offset + Indent::new(0, parent_rewrite.len())), true)
     };
 
     let max_width = try_opt!((width + offset.width()).checked_sub(indent.width()));
@@ -128,8 +127,7 @@ pub fn rewrite_chain(expr: &ast::Expr,
         .collect::<Option<Vec<_>>>());
 
     // Total of all items excluding the last.
-    let almost_total = rewrites[..rewrites.len() - 1]
-        .iter()
+    let almost_total = rewrites[..rewrites.len() - 1].iter()
         .fold(0, |a, b| a + first_line_width(b)) + parent_rewrite.len();
     let total_width = almost_total + first_line_width(rewrites.last().unwrap());
 

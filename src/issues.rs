@@ -283,8 +283,7 @@ fn issue_type() {
     });
 
     assert_eq!(expected,
-               "TODO(#100): more awesomeness"
-                   .chars()
+               "TODO(#100): more awesomeness".chars()
                    .map(|c| seeker.inspect(c))
                    .find(Option::is_some)
                    .unwrap());
@@ -296,8 +295,7 @@ fn issue_type() {
     });
 
     assert_eq!(expected,
-               "Test. FIXME: bad, bad, not good"
-                   .chars()
+               "Test. FIXME: bad, bad, not good".chars()
                    .map(|c| seeker.inspect(c))
                    .find(Option::is_some)
                    .unwrap());

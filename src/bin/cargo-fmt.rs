@@ -200,8 +200,7 @@ fn format_files(files: &Vec<PathBuf>,
         }
         println!("");
     }
-    let mut command = try!(Command::new("rustfmt")
-        .stdout(stdout)
+    let mut command = try!(Command::new("rustfmt").stdout(stdout)
         .args(files)
         .args(fmt_args)
         .spawn());
